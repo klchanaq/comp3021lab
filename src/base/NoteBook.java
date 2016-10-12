@@ -18,7 +18,8 @@ public class NoteBook implements Serializable {
 
 	}
 
-	public boolean createTextNote(String folderName, String title, String content) {
+	public boolean createTextNote(String folderName, String title,
+			String content) {
 
 		TextNote note = new TextNote(title, content);
 		return insertNote(folderName, note);
@@ -61,7 +62,8 @@ public class NoteBook implements Serializable {
 		for (Note n : f.getNotes()) {
 
 			if (note.equals(n)) {
-				System.out.println("Creating note " + note.getTitle() + " under folder " + folderName + " failed");
+				System.out.println("Creating note " + note.getTitle()
+						+ " under folder " + folderName + " failed");
 				return false;
 			}
 
@@ -86,7 +88,7 @@ public class NoteBook implements Serializable {
 
 		List<Note> listNotes = new ArrayList<>();
 
-		for (Folder f : folders) {
+		for (Folder f : this.getFolders()) {
 			listNotes.addAll(f.searchNotes(keywords));
 		}
 		return listNotes;
